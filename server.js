@@ -90,3 +90,15 @@ app.listen(port, () => {
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true })); // <- ADD this to parse form data
+
+// Serve static files like CSS, JS, images
+app.use(express.static(path.join(__dirname, "public")));
+
+// Route for homepage
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
