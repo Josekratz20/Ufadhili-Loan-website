@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fadhili App | Loan Application</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <img src="images/logo.jpg" alt="Fadhili App" class="logo" />
+      <h2>Loan Application</h2>
+
+      <form action="/apply" method="POST">
+        <input type="text" name="fullname" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="text" name="phone" placeholder="Phone Number" required />
+        <input
+          type="number"
+          name="amount"
+          placeholder="Loan Amount (Min Ksh 3,000, Max Ksh 2,000,000)"
+          min="3000"
+          max="2000000"
+          required
+        />
+        <input
+          type="text"
+          name="duration"
+          placeholder="Loan Duration (in months)"
+          required
+        />
+        <button type="submit">Apply Now</button>
+      </form>
+
+      <p><a href="index.html">Back to Home</a></p>
+    </div>
+
+    <div class="running-text">
+      <p>
+        📢 Fadhili Loans: Affordable rates, quick approval, from Ksh 3,000 up to
+        Ksh 2,000,000. Apply today with Fadhili App!
+      </p>
+    </div>
+  </body>
+</html>
