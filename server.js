@@ -5,18 +5,15 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware to parse JSON and form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from 'public' folder
+// Static files (css, images, html)
 app.use(express.static(path.join(__dirname, "public")));
 
-// Connect to SQLite database
 const db = new sqlite3("fadhili.db");
 console.log("Connected to the SQLite database");
 
-// Create users table if it doesn't exist
 db.prepare(
   `CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +23,6 @@ db.prepare(
   )`
 ).run();
 
-// Email transporter config (using Gmail SMTP)
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -38,13 +34,11 @@ const transporter = nodemailer.createTransport({
 // Register route
 app.post("/register", (req, res) => {
   const { username, email, password } = req.body;
-
   const stmt = db.prepare(
     `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`
   );
   const info = stmt.run(username, email, password);
 
-  // Email notification
   const mailOptions = {
     from: "josenjuguna688@gmail.com",
     to: "josenjuguna688@gmail.com",
@@ -53,11 +47,8 @@ app.post("/register", (req, res) => {
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Error sending email: ", error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
+    if (error) console.error("Error sending email:", error);
+    else console.log("Email sent:", info.response);
   });
 
   res.json({
@@ -74,32 +65,57 @@ app.post("/login", (req, res) => {
   );
   const user = stmt.get(email, password);
 
-  if (user) {
-    res.json({ message: "Login successful", user });
-  } else {
-    res.status(401).json({ message: "Invalid credentials" });
-  }
+  if (user) res.redirect("/index.html");
+  else res.status(401).send("Invalid credentials");
 });
-// Default route (first page to load)
+
+// Loan application route
+app.post("/apply-loan", (req, res) => {
+  const { fullname, email, phone1, phone2, amount, duration } = req.body;
+
+  const mailOptions = {
+    from: "josenjuguna688@gmail.com",
+    to: "josenjuguna688@gmail.com",
+    subject: "New Loan Application",
+    text: `New loan application details:
+    Name: ${fullname}
+    Email: ${email}
+    Phone 1: ${phone1}
+    Phone 2: ${phone2}
+    Amount: Ksh ${amount}
+    Duration: ${duration} months`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending loan application email:", error);
+      return res.status(500).send("Failed to send application.");
+    }
+    console.log("Loan application email sent:", info.response);
+    res.send("Loan application submitted successfully!");
+  });
+});
+
+// Serve login page first
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
-// Homepage route
-app.get("/", (req, res) => {
+// Serve about page
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "about.html"));
+});
+
+// Serve application page
+app.get("/apply", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/application", "application.html"));
+});
+
+// Serve homepage
+app.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get("/application", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "public", "application", "application.html")
-  );
-});
-
-app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/pages/about.html"));
-});
-// Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

@@ -2,45 +2,74 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Fadhili | Apply for Loan</title>
+    <title>Apply for Loan | Fadhili App</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      body {
+        background-color: #121212;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      form {
+        max-width: 500px;
+        margin: auto;
+        background: #1e1e1e;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+      }
+      button {
+        background: #3f51b5;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #5c6bc0;
+      }
+    </style>
   </head>
   <body>
-    <div class="sidebar">
-      <div class="logo">
-        <img src="../images/logo.jpg" alt="Fadhili Logo" />
-        <h2>Fadhili App</h2>
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">🏠 Home</a></li>
-        <li><a href="application.html">💸 Apply for Loan</a></li>
-        <li><a href="about.html">ℹ️ About Us</a></li>
-        <li><a href="login.html">🔐 Login / Sign Up</a></li>
-      </ul>
-    </div>
+    <h1>Apply for a Loan</h1>
+    <form action="/apply-loan" method="POST">
+      <label>Full Name:</label>
+      <input type="text" name="fullname" required />
 
-    <div class="main-content">
-      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-      <h1>Apply for a Loan</h1>
-      <p>Fast, affordable loans with Fadhili App.</p>
+      <label>Email:</label>
+      <input type="email" name="email" required />
 
-      <form>
-        <input type="text" placeholder="Full Name" required /><br />
-        <input type="email" placeholder="Email" required /><br />
-        <input type="number" placeholder="Loan Amount (Ksh)" required /><br />
-        <input
-          type="text"
-          placeholder="Loan Duration (months)"
-          required
-        /><br />
-        <button type="submit">Apply Now</button>
-      </form>
-    </div>
+      <label>Phone Number 1:</label>
+      <input type="tel" name="phone1" required />
 
-    <script>
-      function toggleSidebar() {
-        document.querySelector(".sidebar").classList.toggle("collapsed");
-      }
-    </script>
+      <label>Phone Number 2:</label>
+      <input type="tel" name="phone2" required />
+
+      <label>Loan Amount (Ksh):</label>
+      <input type="number" name="amount" min="3000" required />
+
+      <label>Loan Duration (months):</label>
+      <input type="number" name="duration" required />
+
+      <button type="submit">Submit Application</button>
+    </form>
   </body>
 </html>
