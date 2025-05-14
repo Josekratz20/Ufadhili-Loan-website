@@ -30,7 +30,13 @@ const transporter = nodemailer.createTransport({
     pass: "aqvlbzuaaawdilks",
   },
 });
-
+const transporterUfadhili = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "ufadhilicapitallimited@gmail.com",
+    pass: "tboy rxwh sdqe sqtn",
+  },
+});
 // Register route
 app.post("/register", (req, res) => {
   const { username, email, password } = req.body;
@@ -41,7 +47,7 @@ app.post("/register", (req, res) => {
 
   const mailOptions = {
     from: "josenjuguna688@gmail.com",
-    to: "josenjuguna688@gmail.com",
+    to: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     subject: "New User Registration",
     text: `New user registered:\n\nUsername: ${username}\nEmail: ${email}`,
   };
@@ -75,7 +81,7 @@ app.post("/apply-loan", (req, res) => {
 
   const mailOptions = {
     from: "josenjuguna688@gmail.com",
-    to: "josenjuguna688@gmail.com",
+    to: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     subject: "New Loan Application",
     text: `New loan application details:
     Name: ${fullname}
@@ -117,5 +123,5 @@ app.get("/home", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
