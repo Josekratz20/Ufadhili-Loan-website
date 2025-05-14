@@ -71,13 +71,24 @@ app.post("/login", (req, res) => {
   );
   const user = stmt.get(email, password);
 
-  if (user) res.redirect("/index.html");
+  if (user) res.redirect("/home");
   else res.status(401).send("Invalid credentials");
 });
 
 // Loan application route
 app.post("/apply-loan", (req, res) => {
-  const { fullname, email, phone1, phone2, amount, duration } = req.body;
+  const {
+    fullname,
+    email,
+    phone1,
+    phone2,
+    amount,
+    duration,
+    referee1_name,
+    referee1_phone,
+    referee2_name,
+    referee2_phone,
+  } = req.body;
 
   const mailOptions = {
     from: "josenjuguna688@gmail.com",
@@ -89,7 +100,10 @@ app.post("/apply-loan", (req, res) => {
     Phone 1: ${phone1}
     Phone 2: ${phone2}
     Amount: Ksh ${amount}
-    Duration: ${duration} months`,
+    Duration: ${duration} months
+    
+    Referee 1: ${referee1_name} | ${referee1_phone}
+    Referee 2: ${referee2_name} | ${referee2_phone}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -105,6 +119,9 @@ app.post("/apply-loan", (req, res) => {
 // Serve login page first
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "register.html"));
 });
 
 // Serve about page
