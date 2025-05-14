@@ -2,65 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Register - Fadhili App</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Fadhili | Register</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <body class="register-page">
-    <div class="form-container">
-      <img src="images/logo.jpg" alt="Fadhili Logo" class="logo" />
-      <h2>Create a Fadhili Account</h2>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="../images/logo.png" alt="Fadhili Logo" />
+        <h2>Fadhili App</h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">🏠 Home</a></li>
+        <li><a href="application.html">💸 Apply for Loan</a></li>
+        <li><a href="about.html">ℹ️ About Us</a></li>
+        <li><a href="login.html">🔐 Login / Sign Up</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <h1>Register</h1>
       <form action="/register" method="POST">
-        <input type="text" name="username" placeholder="Username" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit">Register</button>
-      </form>
-      
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+        /><br />
+        <input type="email" name="email" placeholder="Email" required /><br />
         <input
           type="password"
-          id="reg_password"
           name="password"
-          placeholder="Password (8+ chars, special characters & numbers)"
+          placeholder="Password"
           required
-          minlength="8"
-          pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}"
-        />
-        <input
-          type="password"
-          id="confirm_password"
-          placeholder="Confirm Password"
-          required
-        />
-        <input type="checkbox" onclick="toggleRegPassword()" /> Show Password
-        <button type="submit" onclick="return checkPassword()">Register</button>
-        <p>Already registered? <a href="login.html">Login</a></p>
+        /><br />
+        <button type="submit">Register</button>
       </form>
     </div>
 
     <script>
-            function toggleRegPassword() {
-              var x = document.getElementById("reg_password");
-              var y = document.getElementById("confirm_password");
-              if (x.type === "password") {
-                x.type = "text";
-                y.type = "text";
-              } else {
-                x.type = "password";
-                y.type = "password";
-              }
-            }
-
-            function checkPassword() {
-              var pass = document.getElementById("reg_password").value;
-              var confirm = document.getElementById("confirm_password").value;
-              if (pass !== confirm) {
-                alert("Passwords do not match. Please try again.");
-                return false;
-              }
-              return true;
-            }
-            <input type="password" id="password" placeholder="Password" required>
-      <span class="toggle-password" id="togglePassword" onclick="togglePassword('password', 'togglePassword')">👁️</span>
+      function toggleSidebar() {
+        document.querySelector(".sidebar").classList.toggle("collapsed");
+      }
     </script>
   </body>
 </html>

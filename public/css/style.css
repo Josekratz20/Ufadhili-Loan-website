@@ -1,119 +1,83 @@
-/* GENERAL STYLING */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #38ef7d, #11998e);
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #121212;
   color: #fff;
+  display: flex;
 }
 
-/* LOGO */
+.sidebar {
+  width: 250px;
+  background-color: #1e1e1e;
+  height: 100vh;
+  position: fixed;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
 .logo {
-  width: 100px;
-  margin: 30px 0 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo img {
+  width: 50px;
   border-radius: 50%;
 }
 
-/* FORM CONTAINER */
-.form-container {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 25px 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  width: 320px;
-  margin-top: 30px;
+.logo h2 {
+  font-size: 1.2em;
+  margin: 10px 0 0;
 }
 
-.form-container h2 {
-  margin-bottom: 20px;
+.nav-links {
+  list-style: none;
+  padding: 0;
 }
 
-/* INPUT FIELDS */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"] {
-  padding: 12px 15px;
-  width: 100%;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
+.nav-links li {
+  padding: 15px 20px;
 }
 
-/* BUTTONS */
-button {
-  padding: 12px;
-  width: 100%;
-  border: none;
-  background: #fff;
-  color: #11998e;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease;
+.nav-links li a {
+  color: #ccc;
+  text-decoration: none;
+  display: block;
 }
 
-button:hover {
-  background: #38ef7d;
+.nav-links li a:hover {
+  background: #333;
   color: #fff;
 }
 
-/* LINKS */
-p a {
+.main-content {
+  margin-left: 250px;
+  padding: 30px;
+  transition: 0.3s;
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 60px;
+}
+
+.toggle-btn {
+  background: #333;
+  border: none;
   color: #fff;
-  text-decoration: underline;
-}
-
-/* RUNNING TEXT */
-.running-text {
-  background: #fff;
-  color: #11998e;
-  width: 100%;
-  padding: 12px;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-.running-text p {
-  white-space: nowrap;
-  animation: scroll-text 15s linear infinite;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-@keyframes scroll-text {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* PASSWORD TOGGLE ICON */
-.toggle-password {
-  position: relative;
-  float: right;
-  margin-right: 10px;
-  margin-top: -35px;
+  font-size: 22px;
+  padding: 8px 12px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 400px) {
-  .form-container {
-    width: 90%;
-  }
+marquee {
+  margin-top: 20px;
+  background: #333;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ccc;
 }
