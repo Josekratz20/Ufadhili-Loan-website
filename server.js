@@ -80,6 +80,10 @@ app.post("/login", (req, res) => {
     res.status(401).json({ message: "Invalid credentials" });
   }
 });
+// Default route (first page to load)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
 
 // Homepage route
 app.get("/", (req, res) => {
