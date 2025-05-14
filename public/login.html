@@ -8,7 +8,7 @@
   <body>
     <div class="sidebar">
       <div class="logo">
-        <img src="../images/logo.png" alt="Fadhili Logo" />
+        <img src="../images/logo.jpg" alt="Fadhili Logo" />
         <h2>Fadhili App</h2>
       </div>
       <ul class="nav-links">
@@ -33,6 +33,34 @@
         <button type="submit">Login</button>
       </form>
     </div>
+    <script>
+      const form = document.getElementById("loginForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = {
+          email: formData.get("email"),
+          password: formData.get("password"),
+        };
+
+        const res = await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          // Redirect to homepage after successful login
+          window.location.href = "index.html";
+        } else {
+          alert(result.message);
+        }
+      });
+    </script>
 
     <script>
       function toggleSidebar() {
