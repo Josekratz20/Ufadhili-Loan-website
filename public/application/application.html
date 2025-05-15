@@ -58,10 +58,10 @@
       <input type="email" name="email" required />
 
       <label>Phone Number 1:</label>
-      <input type="tel" name="phone1" required />
+      <input type="tel" name="phone1" pattern="[0-9]{10}" required />
 
       <label>Phone Number 2:</label>
-      <input type="tel" name="phone2" required />
+      <input type="tel" name="phone2" pattern="[0-9]{10}" required />
 
       <label>Loan Amount (Ksh):</label>
       <input type="number" name="amount" min="3000" required />
@@ -75,12 +75,8 @@
         placeholder="Referee 1 Name"
         required
       />
-      <input
-        type="tel"
-        name="referee1_phone"
-        placeholder="Referee 1 Phone"
-        required
-      />
+      <input type="tel" name="referee1_phone" placeholder="Referee 1 Phone
+      pattern="[0-9]{10}"" required />
 
       <input
         type="text"
@@ -88,12 +84,8 @@
         placeholder="Referee 2 Name"
         required
       />
-      <input
-        type="tel"
-        name="referee2_phone"
-        placeholder="Referee 2 Phone"
-        required
-      />
+      <input type="tel" name="referee2_phone" placeholder="Referee 2 Phone
+      pattern="[0-9]{10}"" required />
 
       <button type="submit">Submit Application</button>
     </form>
