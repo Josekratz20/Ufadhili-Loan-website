@@ -2,59 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Apply for Loan | Fadhili App</title>
+    <title>Loan Application | Fadhili App</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <style>
-      body {
-        background-color: #121212;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-      }
-      h1 {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      form {
-        max-width: 500px;
-        margin: auto;
-        background: #1e1e1e;
-        padding: 20px;
-        border-radius: 10px;
-      }
-      label {
-        display: block;
-        margin: 10px 0 5px;
-      }
-      input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: none;
-        border-radius: 5px;
-      }
-      button {
-        background: #3f51b5;
-        color: #fff;
-        padding: 12px;
-        border: none;
-        width: 100%;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #5c6bc0;
-      }
-    </style>
   </head>
   <body>
-    <h1>Apply for a Loan</h1>
+    <h1>Loan Application Form</h1>
     <form action="/apply-loan" method="POST">
       <label>Full Name:</label>
       <input type="text" name="fullname" required />
 
-      <label>Email:</label>
+      <label>Email Address:</label>
       <input type="email" name="email" required />
 
       <label>Phone Number 1:</label>
@@ -63,38 +20,25 @@
       <label>Phone Number 2:</label>
       <input type="tel" name="phone2" pattern="[0-9]{10}" required />
 
+      <label>Referee 1 Name:</label>
+      <input type="text" name="referee1" required />
+
+      <label>Referee 1 Phone:</label>
+      <input type="tel" name="referee1Phone" pattern="[0-9]{10}" required />
+
+      <label>Referee 2 Name:</label>
+      <input type="text" name="referee2" required />
+
+      <label>Referee 2 Phone:</label>
+      <input type="tel" name="referee2Phone" pattern="[0-9]{10}" required />
+
       <label>Loan Amount (Ksh):</label>
       <input type="number" name="amount" min="3000" required />
 
-      <label>Loan Duration (months):</label>
+      <label>Loan Duration (Months):</label>
       <input type="number" name="duration" required />
 
-      <input
-        type="text"
-        name="referee1_name"
-        placeholder="Referee 1 Name"
-        required
-      />
-      <input type="tel" name="referee1_phone" placeholder="Referee 1 Phone
-      pattern="[0-9]{10}"" required />
-
-      <input
-        type="text"
-        name="referee2_name"
-        placeholder="Referee 2 Name"
-        required
-      />
-      <input type="tel" name="referee2_phone" placeholder="Referee 2 Phone
-      pattern="[0-9]{10}"" required />
-
       <button type="submit">Submit Application</button>
-      <footer class="footer">
-        <p>
-          Designed by <strong>JoseKratz</strong> — Call/WhatsApp:
-          <a href="tel:+254704897445" style="color: #fff">+254 704 897445</a>
-        </p>
-        <p>&copy; 2025 Fadhili App. All rights reserved.</p>
-      </footer>
     </form>
   </body>
 </html>

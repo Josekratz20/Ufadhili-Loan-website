@@ -91,7 +91,7 @@ app.post("/apply-loan", (req, res) => {
   } = req.body;
 
   const mailOptions = {
-    from: "josenjuguna688@gmail.com",
+    from: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     to: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     subject: "New Loan Application",
     text: `New loan application details:
@@ -99,6 +99,9 @@ app.post("/apply-loan", (req, res) => {
     Email: ${email}
     Phone 1: ${phone1}
     Phone 2: ${phone2}
+    Amount: Ksh ${amount}
+     Referee 1: ${referee1} (${referee1Phone})
+    Referee 2: ${referee2} (${referee2Phone})
     Amount: Ksh ${amount}
     Duration: ${duration} months`,
   };
