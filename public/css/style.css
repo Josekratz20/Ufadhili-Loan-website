@@ -81,3 +81,19 @@ marquee {
   border-radius: 5px;
   color: #ccc;
 }
+.footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  border-top: 1px solid #444;
+}
+.footer a {
+  text-decoration: none;
+  color: #1e90ff;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
