@@ -12,6 +12,39 @@
         <img src="images/logo.jpg" alt="Fadhili App Logo" />
         <h2>Fadhili App</h2>
       </div>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="images/slide1.jpg" style="width: 100%" />
+        </div>
+        <div class="mySlides fade">
+          <img src="images/slide2.jpg" style="width: 100%" />
+        </div>
+        <div class="mySlides fade">
+          <img src="images/slide3.jpg" style="width: 100%" />
+        </div>
+        <div class="mySlides fade">
+          <img src="images/slide4.jpg" style="width: 100%" />
+        </div>
+      </div>
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          slides[slideIndex - 1].style.display = "block";
+          setTimeout(showSlides, 5500); // Change image every 5.5 seconds
+        }
+      </script>
+
       <ul class="nav-links">
         <li><a href="index.html">🏠 Home</a></li>
         <li><a href="application/application.html">💸 Apply for Loan</a></li>

@@ -100,10 +100,7 @@ app.post("/apply-loan", (req, res) => {
     Phone 1: ${phone1}
     Phone 2: ${phone2}
     Amount: Ksh ${amount}
-    Duration: ${duration} months
-    
-    Referee 1: ${referee1_name} | ${referee1_phone}
-    Referee 2: ${referee2_name} | ${referee2_phone}`,
+    Duration: ${duration} months`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
