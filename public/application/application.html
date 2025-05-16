@@ -8,35 +8,64 @@
   <body>
     <h1>Loan Application Form</h1>
     <form action="/apply-loan" method="POST">
-      <label>Full Name:</label>
-      <input type="text" name="fullname" required />
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="text" name="idnumber" placeholder="ID Number" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input
+        type="tel"
+        name="phone1"
+        placeholder="Phone Number 1"
+        pattern="[0-9]{10}"
+        required
+      />
+      <input
+        type="tel"
+        name="phone2"
+        placeholder="Phone Number 2"
+        pattern="[0-9]{10}"
+        required
+      />
+      <input
+        type="number"
+        name="amount"
+        placeholder="Loan Amount"
+        min="3000"
+        required
+      />
+      <input
+        type="number"
+        name="duration"
+        placeholder="Loan Duration (months)"
+        required
+      />
 
-      <label>Email Address:</label>
-      <input type="email" name="email" required />
-
-      <label>Phone Number 1:</label>
-      <input type="tel" name="phone1" pattern="[0-9]{10}" required />
-
-      <label>Phone Number 2:</label>
-      <input type="tel" name="phone2" pattern="[0-9]{10}" required />
-
-      <label>Referee 1 Name:</label>
-      <input type="text" name="referee1" required />
-
-      <label>Referee 1 Phone:</label>
-      <input type="tel" name="referee1Phone" pattern="[0-9]{10}" required />
-
-      <label>Referee 2 Name:</label>
-      <input type="text" name="referee2" required />
-
-      <label>Referee 2 Phone:</label>
-      <input type="tel" name="referee2Phone" pattern="[0-9]{10}" required />
-
-      <label>Loan Amount (Ksh):</label>
-      <input type="number" name="amount" min="3000" required />
-
-      <label>Loan Duration (Months):</label>
-      <input type="number" name="duration" required />
+      <h4>Referees</h4>
+      <input
+        type="text"
+        name="referee1_name"
+        placeholder="Referee 1 Name"
+        required
+      />
+      <input
+        type="tel"
+        name="referee1_phone"
+        placeholder="Referee 1 Phone"
+        pattern="[0-9]{10}"
+        required
+      />
+      <input
+        type="text"
+        name="referee2_name"
+        placeholder="Referee 2 Name"
+        required
+      />
+      <input
+        type="tel"
+        name="referee2_phone"
+        placeholder="Referee 2 Phone"
+        pattern="[0-9]{10}"
+        required
+      />
 
       <button type="submit">Submit Application</button>
     </form>

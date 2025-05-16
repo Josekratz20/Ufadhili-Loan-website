@@ -64,21 +64,10 @@ app.post("/register", (req, res) => {
 });
 
 // Login route
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  const stmt = db.prepare(
-    `SELECT * FROM users WHERE email = ? AND password = ?`
-  );
-  const user = stmt.get(email, password);
-
-  if (user) res.redirect("/home");
-  else res.status(401).send("Invalid credentials");
-});
-
-// Loan application route
 app.post("/apply-loan", (req, res) => {
   const {
     fullname,
+    idnumber,
     email,
     phone1,
     phone2,
@@ -91,20 +80,21 @@ app.post("/apply-loan", (req, res) => {
   } = req.body;
 
   const mailOptions = {
-    from: "josenjuguna688@gmail.com",
+    from: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     to: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     subject: "New Loan Application",
     text: `New loan application details:
-Name: ${fullname}
-Email: ${email}
-Phone 1: ${phone1}
-Phone 2: ${phone2}
-Amount: Ksh ${amount}
-Duration: ${duration} months
+    Name: ${fullname}
+    ID Number: ${idnumber}
+    Email: ${email}
+    Phone 1: ${phone1}
+    Phone 2: ${phone2}
+    Amount: Ksh ${amount}
+    Duration: ${duration} months
 
-Referee 1: ${referee1_name} (${referee1_phone})
-Referee 2: ${referee2_name} (${referee2_phone})
-`,
+    Referee 1: ${referee1_name} (${referee1_phone})
+    Referee 2: ${referee2_name} (${referee2_phone})
+    `,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
