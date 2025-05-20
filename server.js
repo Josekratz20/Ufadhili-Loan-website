@@ -79,6 +79,11 @@ app.post("/apply-loan", (req, res) => {
     referee2_phone,
   } = req.body;
 
+  // Validation: Reject if duration > 3 months
+  if (parseInt(duration) > 3) {
+    return res.status(400).send("Loan duration cannot exceed 3 months.");
+  }
+
   const mailOptions = {
     from: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
     to: "josenjuguna688@gmail.com, ufadhilicapitallimited@gmail.com",
@@ -91,7 +96,6 @@ app.post("/apply-loan", (req, res) => {
     Phone 2: ${phone2}
     Amount: Ksh ${amount}
     Duration: ${duration} months
-
     Referee 1: ${referee1_name} (${referee1_phone})
     Referee 2: ${referee2_name} (${referee2_phone})
     `,
@@ -105,6 +109,15 @@ app.post("/apply-loan", (req, res) => {
     console.log("Loan application email sent:", info.response);
     res.send("Loan application submitted successfully!");
   });
+});
+
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    console.error("Error sending loan application email:", error);
+    return res.status(500).send("Failed to send application.");
+  }
+  console.log("Loan application email sent:", info.response);
+  res.send("Loan application submitted successfully!");
 });
 
 // Serve login page first
